@@ -44,11 +44,13 @@
         justify-items: center; */
       }
       .item-img__wrapper {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0) ;
         perspective: 1000;
         -webkit-perspective: 1000;
         /* background-color: #fff; */
         background-color: rgba(255,255,255,0);;
         position: relative;
+        cursor: pointer;
         transition: all 1s;
 	      transform-style: preserve-3d;
         -webkit-transform-style: preserve-3d;
@@ -73,6 +75,7 @@
       .item-img__url {
         width: 100%;
         height: 100%;
+        cursor: pointer;
       }
       .flipper-y {
         -webkit-transform: rotateY(180deg);
