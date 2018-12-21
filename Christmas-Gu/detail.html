@@ -32,7 +32,7 @@
         font-size: 38px;
         font-weight: 580;
       }
-      section {
+      #section {
         width: 100%;
         display: grid;
         padding-left: 11.5vw;
@@ -131,7 +131,7 @@
   <body>
     <div class="app">
       <!-- <header>圣诞礼盒</header> -->
-      <section id="section">
+      <div id="section">
         <div class="item-img__wrapper">
           <div class="front-img">
             <img class="item-img__url" src="./img/1.png" />
@@ -206,7 +206,7 @@
             <img class="item-img__url" src="./img/9-9.JPG"/>
           </div>
         </div>
-      </section>
+      </div>
       <footer id="footer">
       </footer>
     </div>
@@ -277,10 +277,10 @@
         //   sectionDiv.appendChild(wrapperDom)
         // })
 
-        imgArr.forEach(item => {
-          item.addEventListener('click', clickToFlip)
-        })
-        // sectionDiv.addEventListener('touchstart', clickToFlip)
+        // imgArr.forEach(item => {
+        //   item.addEventListener('click', clickToFlip)
+        // })
+        sectionDiv.addEventListener('click', clickToFlip)
         // sectionDiv.addEventListener('touchmove', clickToFlip)
         // sectionDiv.addEventListener('touchend', clickToFlip)
       }
