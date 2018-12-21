@@ -230,7 +230,8 @@
           './img/8-8.JPG',
           './img/9-9.JPG']
 
-        const imgArr = document.querySelectorAll('.item-img__wrapper')
+        const imgArr = document.querySelectorAll('.item-img__wrapper .front-img .item-img__url')
+        console.log(imgArr)
         const sectionDiv = document.getElementById('section')
 
         // frontImgArr.forEach((item, index) => {
@@ -263,7 +264,7 @@
         // })
 
         imgArr.forEach(item => {
-          item.addEventListener('click', clickToFlip)
+          item.addEventListener('touchend', clickToFlip)
         })
         // sectionDiv.addEventListener('click', clickToFlip)
         // sectionDiv.addEventListener('touchmove', clickToFlip)
