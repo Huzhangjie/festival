@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>圣诞礼盒</title>
     <style>
@@ -145,7 +145,7 @@
       <div id="section">
         <div class="item-img__wrapper">
           <div class="front-img">
-            <img class="item-img__url" src="./img/1.png" />
+            <img class="item-img__url" onclick="clickToFlip(0)" src="./img/1.png" />
           </div>
           <div class="back-img">
             <img class="item-img__url" src="./img/1-1.JPG"/>
@@ -154,7 +154,7 @@
 
         <div class="item-img__wrapper">
           <div class="front-img">
-            <img class="item-img__url" src="./img/2.png" />
+            <img class="item-img__url" onclick="clickToFlip(1)" src="./img/2.png" />
           </div>
           <div class="back-img">
             <img class="item-img__url" src="./img/2-2.JPG"/>
@@ -162,7 +162,7 @@
         </div>
         <div class="item-img__wrapper">
           <div class="front-img">
-            <img class="item-img__url" src="./img/34.png" />
+            <img class="item-img__url" onclick="clickToFlip(2)" src="./img/34.png" />
           </div>
           <div class="back-img">
             <img class="item-img__url" src="./img/3-3.JPG"/>
@@ -170,7 +170,7 @@
         </div>
         <div class="item-img__wrapper">
           <div class="front-img">
-            <img class="item-img__url" src="./img/34.png" />
+            <img class="item-img__url" onclick="clickToFlip(3)" src="./img/34.png" />
           </div>
           <div class="back-img">
             <img class="item-img__url" src="./img/4-4.JPG"/>
@@ -178,7 +178,7 @@
         </div>
         <div class="item-img__wrapper">
           <div class="front-img">
-            <img class="item-img__url" src="./img/5.png" />
+            <img class="item-img__url" onclick="clickToFlip(4)" src="./img/5.png" />
           </div>
           <div class="back-img">
             <img class="item-img__url" src="./img/5-5.JPG"/>
@@ -186,7 +186,7 @@
         </div>
         <div class="item-img__wrapper">
           <div class="front-img">
-            <img class="item-img__url" src="./img/6.png" />
+            <img class="item-img__url" onclick="clickToFlip(5)" src="./img/6.png" />
           </div>
           <div class="back-img">
             <img class="item-img__url" src="./img/6-6.JPG"/>
@@ -194,7 +194,7 @@
         </div>
         <div class="item-img__wrapper">
           <div class="front-img">
-            <img class="item-img__url" src="./img/7.png" />
+            <img class="item-img__url" onclick="clickToFlip(6)" src="./img/7.png" />
           </div>
           <div class="back-img">
             <img class="item-img__url" src="./img/7-7.JPG"/>
@@ -202,7 +202,7 @@
         </div>
         <div class="item-img__wrapper">
           <div class="front-img">
-            <img class="item-img__url" src="./img/8.png" />
+            <img class="item-img__url" onclick="clickToFlip(7)" src="./img/8.png" />
           </div>
           <div class="back-img">
             <img class="item-img__url" src="./img/8-8.JPG"/>
@@ -211,7 +211,7 @@
 
         <div class="item-img__wrapper">
           <div class="front-img">
-            <img class="item-img__url" src="./img/9.png" />
+            <img class="item-img__url" onclick="clickToFlip(8)" src="./img/9.png" />
           </div>
           <div class="back-img">
             <img class="item-img__url" src="./img/9-9.JPG"/>
@@ -291,23 +291,27 @@
         // imgArr.forEach(item => {
         //   item.addEventListener('click', clickToFlip)
         // })
-        sectionDiv.addEventListener('touchend', clickToFlip)
+        // sectionDiv.addEventListener('touchend', clickToFlip)
         // sectionDiv.addEventListener('touchmove', clickToFlip)
         // sectionDiv.addEventListener('touchend', clickToFlip)
       }
 
-      function clickToFlip (e) {
-        console.log(e)
-        const _this = this
-        const targetDom = e.target
+      function clickToFlip (index) {
+        // console.log(e)
+        // const _this = this
+        // const targetDom = e.target
 
-        // 点击事件在 section 上
-        if (targetDom.id === 'section') return
-        // 点击事件在 back-img 上
-        if (Array.from(targetDom.classList).includes('back-img')) return
+        // // 点击事件在 section 上
+        // if (targetDom.id === 'section') return
+        // // 点击事件在 back-img 上
+        // if (Array.from(targetDom.classList).includes('back-img')) return
 
-        const wrapperDom = e.path[2]
+        // const wrapperDom = e.path[2]
         // 存在除了item-img__wrapper 的第二个类名
+        const wrapperDivArr = document.querySelectorAll('.item-img__wrapper')
+        
+        console.log(wrapperDivArr)
+        const wrapperDom = wrapperDivArr[index]
         // 说明该图片是倍翻过的
         if (wrapperDom.classList[1]) {
           return
