@@ -40,6 +40,8 @@
         grid-template-rows: 25vw 25vw 25vw;
         grid-gap: 1vw;
         margin-top: 35vw;
+        cursor: pointer;
+
         /* align-items: center;
         justify-items: center; */
       }
@@ -65,6 +67,7 @@
         overflow: hidden;
       }
       .front-img {
+        cursor: pointer;
         z-index: 2;
       }
       .back-img {
@@ -130,6 +133,10 @@
         color: #fff;
         line-height: 20px;
       }
+      input[type=button], input[type=submit], input[type=file], button { 
+        cursor: pointer; 
+        -webkit-appearance: none;
+      } 
     </style>
   </head>
   <body>
@@ -138,7 +145,7 @@
       <div id="section">
         <div class="item-img__wrapper">
           <div class="front-img">
-            <button class="item-img__url" style="background-image: url('./img/1.png')"></button>
+            <img class="item-img__url" src="./img/1.png" />
           </div>
           <div class="back-img">
             <img class="item-img__url" src="./img/1-1.JPG"/>
