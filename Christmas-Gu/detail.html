@@ -262,7 +262,10 @@
         //   sectionDiv.appendChild(wrapperDom)
         // })
 
-        sectionDiv.addEventListener('click', clickToFlip)
+        imgArr.forEach(item => {
+          item.addEventListener('click', clickToFlip)
+        })
+        // sectionDiv.addEventListener('click', clickToFlip)
         // sectionDiv.addEventListener('touchmove', clickToFlip)
         // sectionDiv.addEventListener('touchend', clickToFlip)
       }
