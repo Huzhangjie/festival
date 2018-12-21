@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>圣诞礼盒</title>
     <style>
@@ -50,6 +50,7 @@
         position: relative;
         transition: all 1s;
 	      transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
       }
       .front-img, .front-img {
         backface-visibility: hidden;
@@ -64,6 +65,7 @@
         z-index: 2;
       }
       .back-img {
+        -webkit-transform: rotateY(180deg);
         transform: rotateY(180deg);
         opacity: 0;
       }
@@ -72,6 +74,7 @@
         height: 100%;
       }
       .flipper-y {
+        -webkit-transform: rotateY(180deg);
         transform: rotateY(180deg);
       }
       .flipper-y .back-img {
