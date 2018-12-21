@@ -195,7 +195,9 @@
           sectionDiv.appendChild(wrapperDom)
         })
 
-        sectionDiv.addEventListener('click', clickToFlip)
+        sectionDiv.addEventListener('touchstart', clickToFlip)
+        // sectionDiv.addEventListener('touchmove', clickToFlip)
+        // sectionDiv.addEventListener('touchend', clickToFlip)
       }
       
       function clickToFlip (e) {
