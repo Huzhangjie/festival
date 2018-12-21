@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>圣诞礼盒</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .app {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        color: #222;
+        background-image: url('./img/second-back.png');
+        background-size: 100% 100%;
+      }
+      header {
+        height: 200px;
+        /* background-color: violet; */
+        line-height: 200px;
+        font-size: 38px;
+        font-weight: 580;
+      }
+      section {
+        width: 100%;
+        display: grid;
+        padding-left: 11.5vw;
+        grid-template-columns: 25vw 25vw 25vw;
+        grid-template-rows: 25vw 25vw 25vw;
+        grid-gap: 1vw;
+        margin-top: 35vw;
+        /* align-items: center;
+        justify-items: center; */
+      }
+      .item-img__wrapper {
+        perspective: 1000;
+        -webkit-perspective: 1000;
+        /* background-color: #fff; */
+        position: relative;
+        transition: all 1s;
+	      transform-style: preserve-3d;
+      }
+      .front-img, .front-img {
+        backface-visibility: hidden;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      }
+      .front-img {
+        z-index: 2;
+      }
+      .back-img {
+        transform: rotateY(180deg);
+        opacity: 0;
+      }
+      .item-img__url {
+        width: 100%;
+        height: 100%;
+      }
+      .flipper-y {
+        transform: rotateY(180deg);
+      }
+      .flipper-y .back-img {
+        transition: opacity 1s;
+        opacity: 1;
+      }
+      .flipper-x {
+        transform-origin: 100% 12.5vw;
+        transform: rotateX(180deg);
+      }
+      .froat-opacty .front-img{
+        animation: changeOpcty 1s ease-in;
+        -webkit-animation: changeOpcty 1s ease-in;
+        animation-fill-mode: forwards;
+        -webkit-animation-fill-mode: forwards;
+      }
+      @keyframes changeOpcty {
+        from {
+          opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+      }
+      .change-size .front-img {
+        width: 0;
+        height: 0;
+        transition: all 1s;
+      }
+      footer {
+        margin-top: 15px;
+        /* height: 25px; */
+        /* overflow: hidden; */
+      }
+      .footer-text__item {
+        color: #fff;
+        line-height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <!-- <header>圣诞礼盒</header> -->
+      <section id="section">
+        <!-- <div class="item-img__wrapper">
+          <div class="front-img">
+            <img class="item-img__url" src="./img/markdown_xqbj@2x_new.png" />
+          </div>
+          <div class="back-img">
+            <img class="item-img__url" src="./img/user-icon.png"/>
+          </div>
+        </div> -->
+      </section>
+      <footer id="footer">
+      </footer>
+    </div>
+    <script>
+      const changeClassArr = ['froat-opacty', 'flipper-y', 'change-size']
+
+      // const textArr = ['我恐惧未知', '我恐惧衰老', '我恐惧死亡', '但是一想到未来的岁月里', '可以和你一起度过', '就连这些，我都不是那么害怕了']
+      let textStr = '我恐惧未知,我恐惧衰老,我恐惧死亡\n但是一想到未来的岁月里\n可以和你一起度过\n就连这些，我都不是那么害怕了'
+      let textHtml = ''
+      window.onload = function () {
+        this.init()
+      }
+
+      function init () {
+        const frontImgArr = [
+          './img/1.png',
+          './img/2.png',
+          './img/34.png',
+          './img/34.png',
+          './img/5.png',
+          './img/6.png',
+          './img/7.png',
+          './img/8.png',
+          './img/9.png']
+
+        const backImgArr = ['./img/1-1.JPG',
+          './img/2-2.JPG',
+          './img/3-3.JPG',
+          './img/4-4.JPG',
+          './img/5-5.JPG',
+          './img/6-6.JPG',
+          './img/7-7.JPG',
+          './img/8-8.JPG',
+          './img/9-9.JPG']
+        
+        const imgArr = document.querySelectorAll('.item-img__wrapper')
+        const sectionDiv = document.getElementById('section')
+        
+        frontImgArr.forEach((item, index) => {
+          // console.log('index', index)
+          let wrapperDom = document.createElement('div')
+          wrapperDom.classList.add('item-img__wrapper')
+
+          // fornt Img 
+          let forntImg = document.createElement('img')
+          forntImg.classList.add('item-img__url')
+          forntImg.src = frontImgArr[index]
+          // fornt Img wrapper
+          let frontDom = document.createElement('div')
+          frontDom.classList.add('front-img')
+          frontDom.appendChild(forntImg)
+
+          // back Img 
+          let backImg = document.createElement('img')
+          backImg.classList.add('item-img__url')
+          backImg.src = backImgArr[index]
+          // back Img wrapper
+          let backDom = document.createElement('div')
+          backDom.classList.add('back-img')
+          backDom.appendChild(backImg)
+
+          wrapperDom.appendChild(frontDom)
+          wrapperDom.appendChild(backDom)
+          
+          sectionDiv.appendChild(wrapperDom)
+        })
+
+        sectionDiv.addEventListener('click', clickToFlip)
+      }
+      
+      function clickToFlip (e) {
+        const _this = this
+        const targetDom = e.target
+
+        // 点击事件在 section 上
+        if (targetDom.id === 'section') return 
+        // 点击事件在 back-img 上
+        if (Array.from(targetDom.classList).includes('back-img')) return
+        
+        const wrapperDom = e.path[2]
+        // 存在除了item-img__wrapper 的第二个类名
+        // 说明该图片是倍翻过的
+        if (wrapperDom.classList[1]) {
+          return 
+        } else {
+          // 图片没被翻转至正面  随机一种方式翻转
+          // 0-2 的随机
+          // const random = Math.floor(Math.random() * 3)
+          wrapperDom.classList.add(changeClassArr[1])
+
+          const len = getAllFlipperLen()
+          if (len === 9) {
+            showFooterText()
+          }
+        }
+        return
+      }
+
+      // 获取判断所有已翻转的图片的长度
+      function getAllFlipperLen () {
+        // 已翻转的图片数组
+        const flipperArr = document.querySelectorAll('.flipper-y')
+        return flipperArr.length || 0
+      }
+      
+      // 显示底部文字
+      function showFooterText () {
+        let html = textStr.charAt(0)
+        textHtml += html== "\n" ? "</p><p class='footer-text__item'>" : html
+        document.getElementById("footer").innerHTML = "<p class='footer-text__item'>" + textHtml + "</p>"
+        textStr = textStr.slice(1);
+        if(textStr != "") {
+          setTimeout(showFooterText, 500)
+        }
+      }
+    </script>
+    <script src="./snow.js">
+    </script>
+  </body>
+</html>
