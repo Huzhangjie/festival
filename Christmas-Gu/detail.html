@@ -57,7 +57,7 @@
 	      transform-style: preserve-3d;
         -webkit-transform-style: preserve-3d;
       }
-      .front-img, .front-img {
+      .front-img, .back-img {
         backface-visibility: hidden;
         width: 100%;
         height: 100%;
@@ -69,6 +69,9 @@
       .front-img {
         cursor: pointer;
         z-index: 2;
+      }
+      .flipper-y .front-img {
+        z-index: 0;
       }
       .back-img {
         -webkit-transform: rotateY(180deg);
@@ -139,6 +142,10 @@
       } 
     </style>
     <script>
+      const changeClassArr = ['froat-opacty', 'flipper-y', 'change-size']
+      let textStr = '我恐惧未知,我恐惧衰老,我恐惧死亡\n但是一想到未来的岁月里\n可以和你一起度过\n就连这些，我都不是那么害怕了'
+      let textHtml = ''
+
       function clickToFlip (index) {
         // console.log(e)
         // const _this = this
@@ -164,7 +171,7 @@
           // const random = Math.floor(Math.random() * 3)
           wrapperDom.classList.add(changeClassArr[1])
 
-          const len = getAllFlipperLen()
+          const len = getAllFlipperLen(changeClassArr[1])
           if (len === 9) {
             showFooterText()
           }
@@ -173,9 +180,9 @@
       }
 
       // 获取判断所有已翻转的图片的长度
-      function getAllFlipperLen () {
+      function getAllFlipperLen (className) {
         // 已翻转的图片数组
-        const flipperArr = document.querySelectorAll('.flipper-y')
+        const flipperArr = document.querySelectorAll(`.${className}`)
         return flipperArr.length || 0
       }
 
@@ -274,11 +281,8 @@
       </footer>
     </div>
     <script>
-      const changeClassArr = ['froat-opacty', 'flipper-y', 'change-size']
 
       // const textArr = ['我恐惧未知', '我恐惧衰老', '我恐惧死亡', '但是一想到未来的岁月里', '可以和你一起度过', '就连这些，我都不是那么害怕了']
-      let textStr = '我恐惧未知,我恐惧衰老,我恐惧死亡\n但是一想到未来的岁月里\n可以和你一起度过\n就连这些，我都不是那么害怕了'
-      let textHtml = ''
       window.onload = function () {
         this.init()
       }
@@ -307,9 +311,9 @@
           './img/8-8.JPG',
           './img/9-9.JPG']
 
-        const imgArr = document.querySelectorAll('.item-img__wrapper .front-img .item-img__url')
-        console.log(imgArr)
-        const sectionDiv = document.getElementById('section')
+        // const imgArr = document.querySelectorAll('.item-img__wrapper .front-img .item-img__url')
+        // console.log(imgArr)
+        // const sectionDiv = document.getElementById('section')
 
         // frontImgArr.forEach((item, index) => {
         //   // console.log('index', index)
